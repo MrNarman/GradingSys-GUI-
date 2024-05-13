@@ -30,45 +30,59 @@ public class GUIFrame extends JFrame {
     JButton gradingButton = new JButton("GRADE");
     gradingButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e){
-            String studentFname = fNameTxtField.getText().toUpperCase();
-            String studentLname = lNameTxtField.getText().toUpperCase();
+            
+        try{
+            String studentFname = fNameTxtField.getText().toUpperCase(); //Get first name & convert to upper case
+            String studentLname = lNameTxtField.getText().toUpperCase(); //Get last name & convert to upper case
 
             String mrksToGrade = marksTxtField.getText();
             double studentMarks = Double.parseDouble(mrksToGrade);
 
-            if(studentMarks > 100){
-                JOptionPane.showMessageDialog(gradingFrame, "ENTER MARKS IN RANGE 0 to 100",mrksToGrade, JOptionPane.WARNING_MESSAGE);
 
-            } else if(studentMarks <= 39){
-                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
-                marksLabel.setText("Marks: "+ mrksToGrade);
-                gradeLabel.setText("Grade: E");
-                
-            } else if(studentMarks <= 49){
-                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
-                marksLabel.setText("Marks: "+ mrksToGrade);
-                gradeLabel.setText("Grade: D");
-                
-        
-            } else if(studentMarks <= 59){
-                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
-                marksLabel.setText("Marks: "+ mrksToGrade);
-                gradeLabel.setText("Grade: C");
-                
-        
-            } else if(studentMarks <= 69){
-                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
-                marksLabel.setText("Marks: "+ mrksToGrade);
-                gradeLabel.setText("Grade: B");
-                
-        
-            } else{
-                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
-                marksLabel.setText("Marks: "+ mrksToGrade);
-                gradeLabel.setText("Grade: A");
-                
-        
-            }
+            if(studentFname.isEmpty() || studentLname.isEmpty()){
+                JOptionPane.showMessageDialog(gradingFrame, "ENTER STUDENT NAMES AS REQUESTED!", "REQUIRED FIELD", JOptionPane.ERROR_MESSAGE);
+            }else{
+    
+                if(studentMarks > 100){
+                    JOptionPane.showMessageDialog(gradingFrame, "ENTER MARKS IN RANGE 0 to 100","RANGE ERROR", JOptionPane.WARNING_MESSAGE);
+    
+                } else if(studentMarks <= 39){
+                    fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                    marksLabel.setText("Marks: "+ mrksToGrade);
+                    gradeLabel.setText("Grade: E");
+                    
+                } else if(studentMarks <= 49){
+                    fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                    marksLabel.setText("Marks: "+ mrksToGrade);
+                    gradeLabel.setText("Grade: D");
+                    
+            
+                } else if(studentMarks <= 59){
+                    fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                    marksLabel.setText("Marks: "+ mrksToGrade);
+                    gradeLabel.setText("Grade: C");
+                    
+            
+                } else if(studentMarks <= 69){
+                    fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                    marksLabel.setText("Marks: "+ mrksToGrade);
+                    gradeLabel.setText("Grade: B");
+                    
+            
+                } else{
+                    fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                    marksLabel.setText("Marks: "+ mrksToGrade);
+                    gradeLabel.setText("Grade: A");
+                    
+            
+                }}
+
+        }catch(NumberFormatException error){
+            JOptionPane.showMessageDialog(gradingFrame, "ENTER MARKS.\nSTUDENT MARKS ARE REQUIRED FOR GRADING!", "REQUIRED FIELD", JOptionPane.ERROR_MESSAGE);
+            
+            
+
+        }
 
         }
     });
