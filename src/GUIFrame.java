@@ -25,6 +25,7 @@ public class GUIFrame extends JFrame {
     JLabel gradeLabel = new JLabel("%");
 
     JButton gradingButton = new JButton("GRADE");
+    JButton resetFields = new JButton("CLEAR");
 
     gradingFrame.add(fNameLabel);
     gradingFrame.add(fNameTxtField);
@@ -41,7 +42,10 @@ public class GUIFrame extends JFrame {
 
     gradingFrame.add(gradeLabel);
 
+    gradingFrame.add(new JLabel()); //For spacing
     gradingFrame.add(gradingButton);
+    gradingFrame.add(new JLabel()); //For spacing
+    gradingFrame.add(resetFields);   
 
    }
     
