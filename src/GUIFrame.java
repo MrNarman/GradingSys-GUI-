@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class GUIFrame extends JFrame {
@@ -25,7 +28,60 @@ public class GUIFrame extends JFrame {
     JLabel gradeLabel = new JLabel("%");
 
     JButton gradingButton = new JButton("GRADE");
+    gradingButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e){
+            String studentFname = fNameTxtField.getText().toUpperCase();
+            String studentLname = lNameTxtField.getText().toUpperCase();
+
+            String mrksToGrade = marksTxtField.getText();
+            double studentMarks = Double.parseDouble(mrksToGrade);
+
+            if(studentMarks > 100){
+                JOptionPane.showMessageDialog(gradingFrame, "ENTER MARKS IN RANGE 0 to 100",mrksToGrade, JOptionPane.WARNING_MESSAGE);
+
+            } else if(studentMarks <= 39){
+                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                marksLabel.setText("Marks: "+ mrksToGrade);
+                gradeLabel.setText("Grade: E");
+                
+            } else if(studentMarks <= 49){
+                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                marksLabel.setText("Marks: "+ mrksToGrade);
+                gradeLabel.setText("Grade: D");
+                
+        
+            } else if(studentMarks <= 59){
+                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                marksLabel.setText("Marks: "+ mrksToGrade);
+                gradeLabel.setText("Grade: C");
+                
+        
+            } else if(studentMarks <= 69){
+                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                marksLabel.setText("Marks: "+ mrksToGrade);
+                gradeLabel.setText("Grade: B");
+                
+        
+            } else{
+                fullNameLabel.setText("Name: "+studentFname+ " "+ studentLname);
+                marksLabel.setText("Marks: "+ mrksToGrade);
+                gradeLabel.setText("Grade: A");
+                
+        
+            }
+
+        }
+    });
+
     JButton resetFields = new JButton("CLEAR");
+    resetFields.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e){
+            fNameTxtField.setText("");
+            lNameTxtField.setText("");
+            marksTxtField.setText("");
+
+        }
+    });
 
     gradingFrame.add(fNameLabel);
     gradingFrame.add(fNameTxtField);
